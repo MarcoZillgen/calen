@@ -43,7 +43,7 @@ function Event({
   date: Date | [Date, Date];
 }) {
   return (
-    <div className="relative bg-emerald-400 rounded-lg mt-4 overflow-clip">
+    <div className="relative bg-violet-100/40 rounded mt-4 overflow-clip">
       <div
         className="absolute l-0 t-0 w-[5px] h-full"
         style={{ backgroundColor: color }}
