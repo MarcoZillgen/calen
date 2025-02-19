@@ -4,12 +4,10 @@ import "./globals.css";
 import { EventContainer } from "@/context/event";
 import { DayContainer } from "@/context/day";
 
-
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
 });
-
 
 export const metadata: Metadata = {
   title: "Calen",
@@ -26,7 +24,7 @@ export default function RootLayout({
       <EventContainer>
         <DayContainer>
           <body
-            className={`antialiased w-full h-full bg-stone-800 ${geist.className}`}
+            className={`antialiased w-full h-ful ${geist.className}`}
           >
             {children}
           </body>

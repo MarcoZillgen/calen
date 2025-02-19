@@ -6,7 +6,7 @@ import EventList from "./Sidebar/EventList";
 
 export default function Sidebar() {
   return (
-    <div className="w-1/4 h-full overflow-hidden bg-teal-500 p-4">
+    <div className="w-[600px] h-full overflow-hidden bg-emerald-600 p-4">
       <TopMonthBar />
       <BigDayNumber />
       <EventList />

@@ -15,6 +15,10 @@ export function getMonthName(d: Date) {
   ][d.getMonth()];
 }
 
+export function getYearName(d: Date) {
+  return d.getFullYear();
+}
+
 export function getDayName(d: Date) {
   return [
     "Sunday",
@@ -36,4 +40,13 @@ export function getTime(d: Date) {
   const hours = d.getHours();
   const minutes = d.getMinutes();
   return hours > 12 ? `${hours - 12}:${minutes} pm` : `${hours}:${minutes} am `;
+}
+
+export function getMonthDaysByDate(d: Date): Date[] {
+  const daysInMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  const days = [];
+  for (let i = 1; i <= daysInMonth; i++) {
+    days.push(new Date(d.getFullYear(), d.getMonth(), i));
+  }
+  return days;
 }

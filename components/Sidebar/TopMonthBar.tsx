@@ -1,5 +1,5 @@
 import { useDayContext } from "@/context/day";
-import { getMonthName } from "@/utils/date";
+import { getMonthName, getYearName } from "@/utils/date";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function TopMonthBar() {
@@ -14,7 +14,7 @@ export default function TopMonthBar() {
         <ChevronLeft />
       </button>
       <span className="text-xl font-semibold select-none">
-        {getMonthName(selectedDay)}
+        {getMonthName(selectedDay)} {getYearName(selectedDay)}
       </span>
       <button onClick={() => dispatchDay({ type: "SELECT_NEXT_MONTH" })}>
         <ChevronRight />
