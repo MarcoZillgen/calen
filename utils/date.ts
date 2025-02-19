@@ -15,6 +15,54 @@ export function getMonthName(d: Date) {
   ][d.getMonth()];
 }
 
+export function nextDay(d: Date) {
+  return new Date(
+    d.getFullYear(),
+    d.getMonth(),
+    d.getDate() + 1,
+    d.getHours(),
+    d.getMinutes()
+  );
+}
+
+export function prevDay(d: Date) {
+  return new Date(
+    d.getFullYear(),
+    d.getMonth(),
+    d.getDate() - 1,
+    d.getHours(),
+    d.getMinutes()
+  );
+}
+
+export function nextMonth(d: Date) {
+  return new Date(
+    d.getFullYear(),
+    d.getMonth() + 1,
+    d.getDate(),
+    d.getHours(),
+    d.getMinutes()
+  );
+}
+
+export function dayEnd(d: Date) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59);
+}
+
+export function dayStart(d: Date) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0);
+}
+
+export function prevMonth(d: Date) {
+  return new Date(
+    d.getFullYear(),
+    d.getMonth() - 1,
+    d.getDate(),
+    d.getHours(),
+    d.getMinutes()
+  );
+}
+
 export function getWeekday(d: Date) {
   return d.getDay() === 0 ? 6 : d.getDay() - 1;
 }

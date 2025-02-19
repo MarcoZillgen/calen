@@ -1,6 +1,7 @@
 import { useDayContext } from "@/context/day";
 import { useEventContext } from "@/context/event";
-import { getTime } from "@/utils/date";
+import Event from "./Event";
+import { dayStart, dayEnd } from "@/utils/date";
 
 export default function EventList() {
   const { state: events } = useEventContext();
@@ -10,9 +11,15 @@ export default function EventList() {
 
   const filteredEvents = events.filter((event) => {
     if (Array.isArray(event.date)) {
-      return selectedDay >= event.date[0] && selectedDay <= event.date[1];
+      return (
+        dayStart(selectedDay).getTime() <= event.date[1].getTime() &&
+        dayEnd(selectedDay).getTime() >= event.date[0].getTime()
+      );
     }
-    return selectedDay.toDateString() === event.date.toDateString();
+    return (
+      dayStart(selectedDay).getTime() <= event.date.getTime() &&
+      dayEnd(selectedDay).getTime() >= event.date.getTime()
+    );
   });
 
   return (
@@ -26,38 +33,6 @@ export default function EventList() {
         {filteredEvents.map((event, o) => (
           <Event key={o} {...event} />
         ))}
-      </div>
-    </div>
-  );
-}
-
-function Event({
-  title,
-  description,
-  color,
-  date,
-}: {
-  title: string;
-  description: string;
-  color: string;
-  date: Date | [Date, Date];
-}) {
-  return (
-    <div className="relative bg-violet-100/40 rounded mt-4 overflow-clip">
-      <div
-        className="absolute l-0 t-0 w-[5px] h-full"
-        style={{ backgroundColor: color }}
-      ></div>
-      <div className="relative px-4 py-2">
-        <div className="flex justify-between items-center text-lg font-bold">
-          <h3 className="">{title}</h3>
-          {Array.isArray(date) && (
-            <div className="font-normal text-sm">
-              {getTime(date[0])} - {getTime(date[1])}
-            </div>
-          )}
-        </div>
-        <p className="text-sm truncate h-fit">{description}</p>
       </div>
     </div>
   );

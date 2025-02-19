@@ -1,5 +1,6 @@
 "use client";
 
+import { prevMonth, nextMonth, prevDay, nextDay } from "@/utils/date";
 import { createContext, useContext, useReducer } from "react";
 
 type DayState = {
@@ -27,36 +28,22 @@ function dayReducer(state: DayState, action: DayAction): DayState {
     case "SELECT_PREV_MONTH":
       return {
         ...state,
-        selectedDay: new Date(
-          state.selectedDay.getFullYear(),
-          state.selectedDay.getMonth() - 1
-        ),
+        selectedDay: prevMonth(state.selectedDay),
       };
     case "SELECT_NEXT_MONTH":
       return {
         ...state,
-        selectedDay: new Date(
-          state.selectedDay.getFullYear(),
-          state.selectedDay.getMonth() + 1
-        ),
+        selectedDay: nextMonth(state.selectedDay),
       };
     case "SELECT_PREV_DAY":
       return {
         ...state,
-        selectedDay: new Date(
-          state.selectedDay.getFullYear(),
-          state.selectedDay.getMonth(),
-          state.selectedDay.getDate() - 1
-        ),
+        selectedDay: prevDay(state.selectedDay),
       };
     case "SELECT_NEXT_DAY":
       return {
         ...state,
-        selectedDay: new Date(
-          state.selectedDay.getFullYear(),
-          state.selectedDay.getMonth(),
-          state.selectedDay.getDate() + 1
-        ),
+        selectedDay: nextDay(state.selectedDay),
       };
     default:
       throw new Error(`Unhandled action type: ${JSON.stringify(action)}`);
