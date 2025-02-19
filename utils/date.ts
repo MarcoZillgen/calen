@@ -15,6 +15,10 @@ export function getMonthName(d: Date) {
   ][d.getMonth()];
 }
 
+export function getWeekday(d: Date) {
+  return d.getDay() === 0 ? 6 : d.getDay() - 1;
+}
+
 export function getYearName(d: Date) {
   return d.getFullYear();
 }
